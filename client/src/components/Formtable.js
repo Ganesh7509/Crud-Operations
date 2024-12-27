@@ -2,7 +2,7 @@ import React from 'react';
 import "../App.css";
 import { MdClose } from 'react-icons/md';
 
-const Formtable = ({ handleSubmit, handleOnChange, handleclose, rest, isEditing }) => {
+ export const Formtable = ({ handleSubmit, handleOnChange, handleclose, rest, isEditing }) => {
   return (
     <div className="addContainer">
       <form onSubmit={handleSubmit}>
@@ -22,7 +22,7 @@ const Formtable = ({ handleSubmit, handleOnChange, handleclose, rest, isEditing 
   );
 }
 
-export default Formtable;
+// export default Formtable;
 
 
 

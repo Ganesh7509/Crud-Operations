@@ -1,8 +1,8 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import Formtable from './Components/Formtable';
-
+// import Formtable from './Components/Formtable'
+import { Formtable } from './Components/Formtable';
 axios.defaults.baseURL=" https://crud-operations-backend-tn20.onrender.com";
 axios.get('/some-endpoint')
   .then(response => {
