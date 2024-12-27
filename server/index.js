@@ -47,8 +47,12 @@ app.delete("/delete/:id",async(req,res)=>{
     const data = await userModel.deleteOne({_id : id})
     res.send({success : true, message : "data delete successfully", data : data})
 })
-mongoose.connect(process.env.Mongo_URI)
-.then(()=>{
-    console.log("connect to DB")
-    app.listen(PORT,()=>console.log("server is running in http://localhost:8080/"))
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+    console.log("Connected to DB");
+    app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
 })
+.catch((error) => {
+    console.error("MongoDB connection error:", error.message);
+    process.exit(1); // Exit with error if DB connection fails
+});
