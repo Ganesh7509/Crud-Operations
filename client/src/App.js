@@ -1,16 +1,9 @@
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import { useEffect, useState } from 'react';
-import axios from "axios";
-// import Formtable from './Components/Formtable'
-import { Formtable } from './Components/Formtable';
-axios.defaults.baseURL=" https://crud-operations-backend-tn20.onrender.com";
-axios.get('/some-endpoint')
-  .then(response => {
-    console.log(response.data);
-  })
-  .catch(error => {
-    console.error('There was an error!', error);
-  });
+import axios from 'axios';
+import { MdClose } from 'react-icons/md';
+
+axios.defaults.baseURL = "https://crud-operations-backend-tn20.onrender.com";
 
 function App() {
   const [addSection, setAddSection] = useState(false);
@@ -30,18 +23,14 @@ function App() {
 
   const handleOnChange = (e) => {
     const { value, name } = e.target;
-    setFormData((prev) => {
-      return {
-        ...prev,
-        [name]: value
-      };
-    });
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate form fields before submission
     if (!formData.name || !formData.email || !formData.mobile) {
       alert('Please fill in all fields!');
       return;
@@ -62,8 +51,6 @@ function App() {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-
-    // Validate form fields before submission
     if (!formDataEdit.name || !formDataEdit.email || !formDataEdit.mobile) {
       alert('Please fill in all fields!');
       return;
@@ -107,29 +94,48 @@ function App() {
         <button className="btn btn-add" onClick={() => setAddSection(true)}>Add</button>
 
         {addSection && (
-          <Formtable
-            handleSubmit={handleSubmit}
-            handleOnChange={handleOnChange}
-            handleclose={() => setAddSection(false)}
-            rest={formData}
-            isEditing={false} // Not in editing mode
-          />
+          <div className="addContainer">
+            <form onSubmit={handleSubmit}>
+              <div className="close-btn" onClick={() => setAddSection(false)}><MdClose /></div>
+              <label htmlFor="name">Name: </label>
+              <input type="text" id="name" name="name" onChange={handleOnChange} value={formData.name} />
+
+              <label htmlFor="email">Email: </label>
+              <input type="email" id="email" name="email" onChange={handleOnChange} value={formData.email} />
+
+              <label htmlFor="mobile">Mobile: </label>
+              <input type="number" id="mobile" name="mobile" onChange={handleOnChange} value={formData.mobile} />
+
+              <button className="btn">{editSection ? 'Update' : 'Submit'}</button>
+            </form>
+          </div>
         )}
 
         {editSection && (
-          <Formtable
-            handleSubmit={handleUpdate}
-            handleOnChange={(e) => {
-              const { value, name } = e.target;
-              setFormDataEdit((prev) => ({
-                ...prev,
-                [name]: value
-              }));
-            }}
-            handleclose={() => setEditSection(false)}
-            rest={formDataEdit}
-            isEditing={true} // In editing mode
-          />
+          <div className="addContainer">
+            <form onSubmit={handleUpdate}>
+              <div className="close-btn" onClick={() => setEditSection(false)}><MdClose /></div>
+              <label htmlFor="name">Name: </label>
+              <input type="text" id="name" name="name" onChange={(e) => {
+                const { value, name } = e.target;
+                setFormDataEdit((prev) => ({ ...prev, [name]: value }));
+              }} value={formDataEdit.name} />
+
+              <label htmlFor="email">Email: </label>
+              <input type="email" id="email" name="email" onChange={(e) => {
+                const { value, name } = e.target;
+                setFormDataEdit((prev) => ({ ...prev, [name]: value }));
+              }} value={formDataEdit.email} />
+
+              <label htmlFor="mobile">Mobile: </label>
+              <input type="number" id="mobile" name="mobile" onChange={(e) => {
+                const { value, name } = e.target;
+                setFormDataEdit((prev) => ({ ...prev, [name]: value }));
+              }} value={formDataEdit.mobile} />
+
+              <button className="btn">{editSection ? 'Update' : 'Submit'}</button>
+            </form>
+          </div>
         )}
 
         <div className='tableContainer'>
@@ -169,6 +175,301 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import './App.css';
+// import { useEffect, useState } from 'react';
+// import axios from "axios";
+// // import Formtable from './Components/Formtable'
+// import { Formtable } from './Components/Formtable';
+// axios.defaults.baseURL=" https://crud-operations-backend-tn20.onrender.com";
+// axios.get('/some-endpoint')
+//   .then(response => {
+//     console.log(response.data);
+//   })
+//   .catch(error => {
+//     console.error('There was an error!', error);
+//   });
+
+// function App() {
+//   const [addSection, setAddSection] = useState(false);
+//   const [editSection, setEditSection] = useState(false);
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     mobile: "",
+//   });
+//   const [formDataEdit, setFormDataEdit] = useState({
+//     name: "",
+//     email: "",
+//     mobile: "",
+//     _id: ""
+//   });
+//   const [dataList, setDataList] = useState([]);
+
+//   const handleOnChange = (e) => {
+//     const { value, name } = e.target;
+//     setFormData((prev) => {
+//       return {
+//         ...prev,
+//         [name]: value
+//       };
+//     });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     // Validate form fields before submission
+//     if (!formData.name || !formData.email || !formData.mobile) {
+//       alert('Please fill in all fields!');
+//       return;
+//     }
+
+//     const data = await axios.post("/create", formData);
+//     if (data.data.success) {
+//       setAddSection(false);
+//       alert(data.data.message);
+//       getFetchData();
+//       setFormData({
+//         name: "",
+//         email: "",
+//         mobile: ""
+//       });
+//     }
+//   };
+
+//   const handleUpdate = async (e) => {
+//     e.preventDefault();
+
+//     // Validate form fields before submission
+//     if (!formDataEdit.name || !formDataEdit.email || !formDataEdit.mobile) {
+//       alert('Please fill in all fields!');
+//       return;
+//     }
+
+//     const data = await axios.put("/update", formDataEdit);
+//     if (data.data.success) {
+//       getFetchData();
+//       alert(data.data.message);
+//       setEditSection(false);
+//     }
+//   };
+
+//   const getFetchData = async () => {
+//     const data = await axios.get("/");
+//     if (data.data.success) {
+//       setDataList(data.data.data);
+//     }
+//   };
+
+//   useEffect(() => {
+//     getFetchData();
+//   }, []);
+
+//   const handleDelete = async (id) => {
+//     const data = await axios.delete("/delete/" + id);
+//     if (data.data.success) {
+//       getFetchData();
+//       alert(data.data.message);
+//     }
+//   };
+
+//   const handleEdit = (el) => {
+//     setFormDataEdit(el);
+//     setEditSection(true);
+//   };
+
+//   return (
+//     <>
+//       <div className="container">
+//         <button className="btn btn-add" onClick={() => setAddSection(true)}>Add</button>
+
+//         {addSection && (
+//           <Formtable
+//             handleSubmit={handleSubmit}
+//             handleOnChange={handleOnChange}
+//             handleclose={() => setAddSection(false)}
+//             rest={formData}
+//             isEditing={false} // Not in editing mode
+//           />
+//         )}
+
+//         {editSection && (
+//           <Formtable
+//             handleSubmit={handleUpdate}
+//             handleOnChange={(e) => {
+//               const { value, name } = e.target;
+//               setFormDataEdit((prev) => ({
+//                 ...prev,
+//                 [name]: value
+//               }));
+//             }}
+//             handleclose={() => setEditSection(false)}
+//             rest={formDataEdit}
+//             isEditing={true} // In editing mode
+//           />
+//         )}
+
+//         <div className='tableContainer'>
+//           <table>
+//             <thead>
+//               <tr>
+//                 <th>Name</th>
+//                 <th>Email</th>
+//                 <th>Mobile</th>
+//                 <th></th>
+//               </tr>
+//             </thead>
+//             <tbody>
+//               {dataList.length > 0 ? (
+//                 dataList.map((el) => (
+//                   <tr key={el._id}>
+//                     <td>{el.name}</td>
+//                     <td>{el.email}</td>
+//                     <td>{el.mobile}</td>
+//                     <td>
+//                       <button className='btn btn-edit' onClick={() => handleEdit(el)}>Edit</button>
+//                       <button className='btn btn-delete' onClick={() => handleDelete(el._id)}>Delete</button>
+//                     </td>
+//                   </tr>
+//                 ))
+//               ) : (
+//                 <tr>
+//                   <td colSpan="4" style={{ textAlign: "center" }}>No data available</td>
+//                 </tr>
+//               )}
+//             </tbody>
+//           </table>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default App;
 
 
 
