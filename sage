@@ -1,0 +1,35 @@
+[33mcommit 238b5f40c4ccfed9e8f06b6d547925af5edaa95c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Ganesh7509 <kundeganesh52@gmail.com>
+Date:   Fri Dec 27 19:03:55 2024 +0530
+
+    Resolved merge conflicts
+
+[33mcommit 6a3b5f2193ea835479e1ec71fccb18752a4df81b[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Ganesh7509 <kundeganesh52@gmail.com>
+Date:   Fri Dec 27 18:47:25 2024 +0530
+
+    Refactor: Implemented named exports and imports for Formtable component
+
+[33mcommit 3d0452e12328d23a8b209820de938778ae174022[m
+Author: Ganesh Kunde <143575248+Ganesh7509@users.noreply.github.com>
+Date:   Fri Dec 27 17:35:32 2024 +0530
+
+    Update App.js
+
+[33mcommit 5097d053e9118de2525bdd707e1a423588a69d48[m
+Author: Ganesh7509 <kundeganesh52@gmail.com>
+Date:   Fri Dec 27 17:24:52 2024 +0530
+
+    Updated .env file and server configuration
+
+[33mcommit f654567f93ef975f59da837e37ee37fd54b4d1a8[m
+Author: Ganesh7509 <kundeganesh52@gmail.com>
+Date:   Fri Dec 27 16:22:58 2024 +0530
+
+    Your commit message
+
+[33mcommit f401a74c5422e983cb0de4584bf4310a6a5380e9[m
+Author: Ganesh7509 <kundeganesh52@gmail.com>
+Date:   Wed Dec 25 09:03:58 2024 +0530
+
+    Initial commit for Crud-operations project
