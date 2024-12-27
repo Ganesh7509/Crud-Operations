@@ -7,7 +7,9 @@ const mongoose = require('mongoose')
 
 const app = express()
 app.use(cors({
-    origin: ' http://localhost:3000 '
+    origin: ['http://localhost:3000','https://crud-operations-front-end.onrender.com'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type']
 }))
 app.use(express.json())
 
@@ -50,7 +52,7 @@ app.delete("/delete/:id",async(req,res)=>{
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log("Connected to DB");
-    app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+    app.listen(PORT,'0.0.0.0',() => console.log(`Server running at http://0.0.0.0:${PORT}`));
 })
 .catch((error) => {
     console.error("MongoDB connection error:", error.message);
