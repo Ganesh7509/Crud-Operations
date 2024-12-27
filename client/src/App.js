@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from "axios";
 import Formtable from './Components/Formtable';
 
-axios.defaults.baseURL=" http://localhost:8080/";
+axios.defaults.baseURL=" https://crud-operations-backend-tn20.onrender.com";
 axios.get('/some-endpoint')
   .then(response => {
     console.log(response.data);
